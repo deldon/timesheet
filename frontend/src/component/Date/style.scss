@@ -1,0 +1,27 @@
+.date{
+    display: flex;
+    justify-content:space-around;
+    height: 40px;
+    margin: 1rem;
+
+
+    img{
+        width: 40px;
+        cursor: pointer;
+        filter: invert(91%) sepia(14%) saturate(5250%) hue-rotate(135deg) brightness(78%) contrast(90%);
+    }
+
+    &-text{
+        display: flex;
+        align-items: center;
+        p{
+            text-align: center;
+            
+            font-size: 1.5rem;
+            width: 10rem;
+            font-family: Etext;
+        }
+    }
+
+
+}

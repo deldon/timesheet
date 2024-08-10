@@ -1,0 +1,22 @@
+.signature-name{
+   
+    background-color: #23bdbf;
+    font-size: 1.5rem;
+    padding: 1rem;
+   
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-transform : capitalize;
+    font-family: Etext;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+    .signature-name{
+        margin:0.3rem;
+       // width: 21%;
+    }
+
+
+  }

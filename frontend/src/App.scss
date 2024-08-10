@@ -1,0 +1,33 @@
+.main{
+    
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    left:0px;
+    text-decoration : none;
+   
+    
+}
+
+@media screen and (min-width: 1024px) {
+  .main{
+    right:5%;
+    left:5%;
+    
+  }
+}
+
+
+
+  @font-face {
+    font-family: Etitle;
+    src: url(./fonts/MikeSansFree-rgnrB.otf);
+  }
+
+
+  @font-face {
+    font-family: Etext;
+    src: url(./fonts/Caviar_Dreams_Bold.ttf);
+  }
+  

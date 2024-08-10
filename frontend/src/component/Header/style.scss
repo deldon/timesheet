@@ -1,0 +1,24 @@
+.header {
+  background-color: rgb(255, 217, 45);
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position:fixed;
+  z-index: 100;
+
+  &-name {
+    margin: 1.5rem;
+    font-size: 1.2rem;
+    
+    font-family: Etext;
+  }
+
+  &-menu {
+    margin-right: 1rem;
+    width: 30px;
+    cursor: pointer;
+   
+  }
+}

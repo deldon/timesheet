@@ -1,0 +1,90 @@
+.teacher_card {
+  background-color: #23bdbf;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  
+ // height: auto;
+
+  &_head {
+    color: white;
+    font-family: Etitle;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+ 
+  }
+
+  &_student {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    
+
+    &_item {
+      background-color: rgb(255, 255, 255);
+      margin: 0.1rem;
+      padding: 0.3rem;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+      height: 20px;
+
+      &_supr {
+        width: 20px;
+        margin-right: 0.2rem;
+        filter: invert(56%) sepia(53%) saturate(654%) hue-rotate(132deg)
+          brightness(103%) contrast(80%);
+        cursor: pointer;
+      }
+
+      &_name {
+        font-family: Etext;
+      }
+    }
+
+    &_add {
+      background-color: rgb(255, 255, 255);
+      padding: 0.5rem;
+      margin-top: 1rem;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      text-align: center;
+      font-family: Etext;
+      font-size: 1.1rem;
+      color: #23bdbf;
+
+      cursor: pointer;
+     
+    }
+  }
+
+  &_footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+
+    bottom: 0px;
+    height: 20%;
+
+    &_icon {
+      img {
+        cursor: pointer;
+      }
+      &_delete{
+       cursor: pointer;
+          
+        
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .teacher_card {
+  height: auto;
+  }
+}
+

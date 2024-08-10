@@ -1,0 +1,93 @@
+.post-signature {
+  position: fixed;
+  top: 60px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 30;
+  padding-bottom: 1rem;
+
+  background-color: white;
+  &-close {
+    display: flex;
+    justify-content: end;
+    img {
+      margin: 1rem;
+      width: 40px;
+      cursor: pointer;
+    }
+  }
+  &-form {
+  
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    &-error {
+      color: #ff1717;
+      margin: 1rem;
+      margin-bottom: -1rem;
+      font-family: Etext;
+    }
+
+    input {
+      width: 90%;
+      height: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    &-box {
+      width: 100%;
+
+      label {
+        font-size: large;
+        margin-bottom: 0.5rem;
+        font-family: Etext;
+      }
+
+      input {
+        border-radius: 15px;
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: #eeeeee;
+        margin-top: 0.5rem;
+      }
+
+      &-check {
+        display: grid;
+        grid-template-columns: 50% 50%;
+      }
+    }
+    &-submit {
+      background-color: #23bdbf;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      color: #eeeeee;
+      font-family: Etext;
+      font-size: 1.2rem;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+  }
+}
+
+.red {
+  border: solid 2px #ff1717;
+}
+
+@media screen and (min-width: 1024px) {
+  .post-signature {
+    top: 20%;
+    bottom: auto;
+    left: 30%;
+    right: 30%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 40%;
+
+    &-close {
+      background-color: rgb(255, 217, 45);
+    }
+  }
+}

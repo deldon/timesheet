@@ -1,0 +1,62 @@
+.profile {
+    &-close {
+  
+  
+      display: flex;
+      justify-content: end;
+      img{
+        margin: 1rem;
+        width: 40px;
+      }
+      
+    }
+    &-form {
+      padding-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+  
+      input {
+        width: 80%;
+        height: 2rem;
+        margin-bottom: 1rem;
+      }
+  
+      &-box {
+        width: 80%;
+  
+        label {
+          font-size: large;
+          margin-bottom: 0.5rem;
+          font-family: Etext;
+        }
+  
+        input {
+          width: calc(100% - 2rem);
+          border-radius: 15px;
+          padding: 0.5rem 1rem;
+          border: none;
+          background-color: #eeeeee;
+          margin-top: 0.5rem;
+        }
+      }
+      &-submit {
+        background-color: #23bdbf;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        color: #eeeeee;
+        font-family: Etext;
+        font-size: 1.2rem;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        
+      }
+    }
+  
+  
+  }
+  
+  .red {
+    border: solid 2px #ff1717;
+  }

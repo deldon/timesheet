@@ -1,0 +1,19 @@
+.signature{
+    &-name{
+        margin:1rem;
+        background-color: aquamarine;
+        padding: 1rem;
+        font-size: large;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .signature{
+       &_wrapper{
+        display: flex;
+        flex-wrap: wrap;
+       }
+    }
+
+
+  }

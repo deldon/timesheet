@@ -1,0 +1,62 @@
+.delete {
+  position: fixed;
+  top: 60px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 30;
+
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
+
+  
+  &_signature {
+    height: 50%;
+
+    &_header {
+      margin: 1rem;
+      text-align: center;
+      font-family: Etext;
+    }
+
+    &_footer {
+      display: flex;
+      justify-content: space-around;
+
+      &_box {
+        background-color: #23bdbf;
+        padding: 1rem;
+        border-radius: 7px;
+
+        text-align: center;
+        font-family: Etitle;
+        color: white;
+        font-size: 1.7rem;
+        width: 100%;
+        margin: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .delete{
+   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 40%;
+
+    top: 20%;
+    bottom: auto;
+    left: 30%;
+    right: 30%;
+    &_signature {
+      
+    }
+    
+  }
+}

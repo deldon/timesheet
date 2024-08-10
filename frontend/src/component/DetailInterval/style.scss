@@ -1,0 +1,28 @@
+
+.RecapInvalid {
+    margin: 1rem;
+    &_form {
+        display: grid;
+        grid-template-columns: 50% 50%;
+
+        font-family: Etext;
+        font-size: 0.8rem;
+
+
+    }
+  }
+
+  .RecapInvalid_from_submit {
+    background-color: #23BDBF;
+    border: none;
+    padding: 0.5rem;
+    font-family: Etext;
+    color: white;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+
+  }
+  
