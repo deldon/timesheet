@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: timesheet2
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: timesheet2
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./db/my_database.dump:/docker-entrypoint-initdb.d/my_database.dump
+      - ./db/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.2
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      PORT: 5000
+      DATABASE_URL: postgres://timesheet2:1234@172.18.0.2:5432/timesheet2
+      SECRET_KEY: aeiouy12345678
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      REACT_APP_API_URL: https://yourdomain.com/api/  # Utilisez votre domaine ici
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.4
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs/live/yourdomain.com/
+      - ./nginx/html:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.5
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./nginx/certs:/etc/letsencrypt
+      - ./nginx/html:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 6h & wait $${!}; certbot renew; done;'"
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.6
+
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+
+volumes:
+  db_data:
