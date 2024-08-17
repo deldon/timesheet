@@ -6,16 +6,16 @@ services:
       context: ./db
       dockerfile: Dockerfile
     environment:
-      POSTGRES_USER: timesheet2
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: timesheet2
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./db/my_database.dump:/docker-entrypoint-initdb.d/my_database.dump
       - ./db/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     networks:
-      my_network:
-        ipv4_address: 172.18.0.2
+      - my_network
+    restart: always  # Redémarrage automatique
 
   backend:
     build:
@@ -23,29 +23,28 @@ services:
       dockerfile: Dockerfile
     environment:
       PORT: 5000
-      DATABASE_URL: postgres://timesheet2:1234@172.18.0.2:5432/timesheet2
-      SECRET_KEY: aeiouy12345678
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      SECRET_KEY: ${SECRET_KEY}
     networks:
-      my_network:
-        ipv4_address: 172.18.0.3
+      - my_network
+    restart: always  # Redémarrage automatique
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     environment:
-      REACT_APP_API_URL: https://yourdomain.com/api/  # Utilisez votre domaine ici
+      REACT_APP_API_URL: ${REACT_APP_API_URL}
     networks:
-      my_network:
-        ipv4_address: 172.18.0.4
+      - my_network
+    restart: always  # Redémarrage automatique
 
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+  caddy:
+    image: caddy:latest
     volumes:
-      - ./nginx/certs:/etc/nginx/certs/live/yourdomain.com/
-      - ./nginx/html:/usr/share/nginx/html
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
     ports:
       - "80:80"
       - "443:443"
@@ -53,25 +52,14 @@ services:
       - backend
       - frontend
     networks:
-      my_network:
-        ipv4_address: 172.18.0.5
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./nginx/certs:/etc/letsencrypt
-      - ./nginx/html:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 6h & wait $${!}; certbot renew; done;'"
-    networks:
-      my_network:
-        ipv4_address: 172.18.0.6
+      - my_network
+    restart: always  # Redémarrage automatique
 
 networks:
   my_network:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/16
 
 volumes:
   db_data:
+  caddy_data:
+  caddy_config:

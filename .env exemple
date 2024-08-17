@@ -1,0 +1,5 @@
+POSTGRES_USER=timesheet2
+POSTGRES_PASSWORD=1234
+POSTGRES_DB=timesheet2
+SECRET_KEY=aeiouy12345678
+REACT_APP_API_URL=https://yourdomain.com/api/

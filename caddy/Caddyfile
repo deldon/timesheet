@@ -1,0 +1,10 @@
+yourdomain.com {
+    # Rediriger tout le trafic HTTP vers HTTPS
+    redir * https://{host}{uri}
+
+    # Proxy pour le frontend
+    reverse_proxy / frontend:3000
+
+    # Proxy pour l'API backend
+    reverse_proxy /api/* backend:5000
+}
