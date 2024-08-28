@@ -28,7 +28,7 @@
 FROM nginx:alpine
 
 # Étape 2 : Copier le contenu du dossier 'build' dans le répertoire par défaut de Nginx
-COPY build /usr/share/nginx/html
+COPY dist /usr/share/nginx/html
 
 # Étape 3 : Exposer le port 80 pour accéder à l'application
 EXPOSE 80
