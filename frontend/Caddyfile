@@ -1,0 +1,13 @@
+:80 {
+    root * /usr/share/caddy
+    file_server
+
+    # Ajouter des en-têtes de sécurité
+    header {
+        Content-Security-Policy: script-src 'self' 'unsafe-eval' https://lea.llio.fr
+        Strict-Transport-Security: max-age=31536000; includeSubDomains
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: DENY
+        X-XSS-Protection: "1; mode=block"
+    }
+}

@@ -1,4 +1,20 @@
-# # Étape 1: Construire l'application React
+# Étape 1 : Utiliser l'image Caddy comme base
+FROM caddy:alpine
+
+# Étape 2 : Copier le contenu du dossier 'build' dans le répertoire par défaut de Caddy
+COPY dist /usr/share/caddy
+
+# Étape 3 : Copier le fichier Caddyfile dans le conteneur
+COPY Caddyfile /etc/caddy/Caddyfile
+
+# Étape 4 : Exposer le port 80 pour accéder à l'application
+EXPOSE 80
+
+# Caddy démarre automatiquement avec l'image de base, vous n'avez pas besoin de CMD
+
+
+
+# Étape 1: Construire l'application React
 # FROM node:16-alpine AS build
 
 # # Définir le répertoire de travail
@@ -24,14 +40,14 @@
 # # Commande pour démarrer Nginx
 # CMD ["nginx", "-g", "daemon off;"]
 
-# Étape 1 : Utiliser l'image Nginx comme base
-FROM nginx:alpine
+# # Étape 1 : Utiliser l'image Nginx comme base
+# FROM nginx:alpine
 
-# Étape 2 : Copier le contenu du dossier 'build' dans le répertoire par défaut de Nginx
-COPY dist /usr/share/nginx/html
+# # Étape 2 : Copier le contenu du dossier 'build' dans le répertoire par défaut de Nginx
+# COPY dist /usr/share/nginx/html
 
-# Étape 3 : Exposer le port 80 pour accéder à l'application
-EXPOSE 80
+# # Étape 3 : Exposer le port 80 pour accéder à l'application
+# EXPOSE 80
 
-# Étape 4 : Démarrer Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# # Étape 4 : Démarrer Nginx
+# CMD ["nginx", "-g", "daemon off;"]
