@@ -2,7 +2,7 @@
 .env
 .envs
 sqitch.conf
-build
+#build
 
 # Logs
 logs
