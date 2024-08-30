@@ -2,4 +2,6 @@
     root * /usr/share/caddy
     file_server
 
+    Content-Security-Policy: script-src 'self' 'unsafe-eval';
+
 }

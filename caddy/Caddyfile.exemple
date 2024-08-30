@@ -1,0 +1,32 @@
+lea.llio.fr {
+    # Rediriger tout le trafic HTTP vers HTTPS
+    @http {
+        protocol http
+    }
+    redir @http https://{host}{uri}
+
+    # Proxy pour le frontend
+    reverse_proxy / timesheet-frontend-1:80
+    header {
+        # HSTS (Force HTTPS)
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        # Réduire les risques de clickjacking
+        X-Frame-Options "DENY"
+        # Améliorer la sécurité en empêchant le navigateur de tenter de détecter le type MIME
+        X-Content-Type-Options "nosniff"
+    }
+
+    @cors {
+        header Origin yourdomain.com
+        method OPTIONS
+    }
+
+    handle_options {
+        respond 204
+    }
+
+    # Proxy pour l'API backend
+    reverse_proxy /api/* timesheet-backend-1:5000
+
+
+}
